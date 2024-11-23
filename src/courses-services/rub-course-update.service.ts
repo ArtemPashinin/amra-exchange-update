@@ -24,7 +24,6 @@ export class RubUpdateCourseService {
         1 / ask.price,
       );
     } else {
-      if(source === 'USDT' || target === 'USDT') console.log(ask)
       await this.currencyExchangeService.updateCourse(
         source,
         target,
@@ -43,7 +42,7 @@ export class RubUpdateCourseService {
   }
 
   public async updateUsdRub() {
-    await this.updateCurrencyPair('USDT', 'USD', true);
+    await this.updateCurrencyPair('USD', 'RUB', true);
   }
 
   public async updateEthRub() {
