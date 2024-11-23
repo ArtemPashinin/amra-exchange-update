@@ -42,7 +42,7 @@ export class RubUpdateCourseService {
   }
 
   public async updateUsdRub() {
-    await this.updateCurrencyPair('USD', 'RUB', true);
+    await this.updateCurrencyPair('USDT', 'RUB', true);
   }
 
   public async updateEthRub() {
