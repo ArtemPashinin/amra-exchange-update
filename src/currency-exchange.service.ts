@@ -55,6 +55,7 @@ export class CurrencyExchangeService {
         },
       ],
     });
+    
     await courseExchange.update({ exchangeRate: course });
   }
 }
