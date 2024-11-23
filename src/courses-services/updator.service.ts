@@ -4,6 +4,7 @@ import { Cron } from '@nestjs/schedule';
 import { BtcUpdateCourseService } from './btc-course-update.service';
 import { EthUpdateCourseService } from './eth-course-update.service';
 import { AedUpdateCourseService } from './aed-course-update.service';
+import { TonUpdateCourseService } from './ton-course-update.service';
 
 @Injectable()
 export class UpdatorService {
@@ -12,9 +13,10 @@ export class UpdatorService {
     private readonly btcUpdateCourseService: BtcUpdateCourseService,
     private readonly ethUpdateCourseService: EthUpdateCourseService,
     private readonly aedUpdateCourseService: AedUpdateCourseService,
+    private readonly tonUpdateCourseService: TonUpdateCourseService,
   ) {}
 
-  @Cron('* * * * * *')
+  @Cron('*/5 * * * * *')
   public async updateAllCurrencies() {
     console.log('called');
     await Promise.all([
@@ -22,6 +24,7 @@ export class UpdatorService {
       this.btcUpdateCourseService.getTasks(),
       this.ethUpdateCourseService.getTasks(),
       this.aedUpdateCourseService.getTasks(),
+      this.tonUpdateCourseService.getTasks(),
     ]);
   }
 }

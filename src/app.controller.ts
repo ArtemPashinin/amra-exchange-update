@@ -12,12 +12,7 @@ export class AppController {
   ) {}
 
   @Get()
-  public async getCurrency() {
-    console.log(await this.appService.getOffer('USDT', 'RUB'));
-    // await this.updateCourseService.updateUsdtRub();
-    // await this.updateCourseService.updateEthRub();
-    // await this.updateCourseService.updateBtcRub();
-  }
+  public async getCurrency() {}
 
   @Get('course/:id?')
   public async test(@Param('id', ParseIntPipe) id?: number) {

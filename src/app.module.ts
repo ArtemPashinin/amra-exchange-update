@@ -13,6 +13,7 @@ import { UpdatorService } from './courses-services/updator.service';
 import { BtcUpdateCourseService } from './courses-services/btc-course-update.service';
 import { EthUpdateCourseService } from './courses-services/eth-course-update.service';
 import { AedUpdateCourseService } from './courses-services/aed-course-update.service';
+import { TonUpdateCourseService } from './courses-services/ton-course-update.service';
 
 @Module({
   imports: [
@@ -48,6 +49,7 @@ import { AedUpdateCourseService } from './courses-services/aed-course-update.ser
     BtcUpdateCourseService,
     EthUpdateCourseService,
     AedUpdateCourseService,
+    TonUpdateCourseService,
     UpdatorService,
   ],
 })
