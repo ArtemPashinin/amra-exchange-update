@@ -16,7 +16,6 @@ export class UpdatorService {
 
   @Cron('*/30 * * * * *')
   public async updateAllCurrencies() {
-    console.log('called');
     await Promise.all([
       this.rubUpdateCourseService.getTasks(),
       this.btcUpdateCourseService.getTasks(),
