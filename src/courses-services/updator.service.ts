@@ -16,11 +16,7 @@ export class UpdatorService {
     private readonly tonUpdateCourseService: TonUpdateCourseService,
   ) {}
 
-<<<<<<< HEAD
-  @Cron('*/5 * * * * *')
-=======
   @Cron('*/30 * * * * *')
->>>>>>> ffad95726ced2728c3426d1d6ee17427662e5b66
   public async updateAllCurrencies() {
     await Promise.all([
       this.rubUpdateCourseService.getTasks(),
