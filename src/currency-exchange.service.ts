@@ -55,6 +55,9 @@ export class CurrencyExchangeService {
         },
       ],
     });
-    await courseExchange.update({ exchangeRate: course });
+    try{
+    await courseExchange.update({ exchangeRate: course });} catch(err) {
+      console.log(sourceCurrencyCode, targetCurrencyCode)
+    }
   }
 }
