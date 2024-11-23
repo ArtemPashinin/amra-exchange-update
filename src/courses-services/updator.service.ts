@@ -14,7 +14,7 @@ export class UpdatorService {
     private readonly aedUpdateCourseService: AedUpdateCourseService,
   ) {}
 
-  @Cron('* * * * * *')
+  @Cron('*/30 * * * * *')
   public async updateAllCurrencies() {
     console.log('called');
     await Promise.all([
