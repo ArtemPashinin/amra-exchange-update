@@ -39,7 +39,7 @@ export class RubUpdateCourseService {
   }
 
   public async updateUsdtRub() {
-    await this.updateCurrencyPair('USDT', 'RUB', true);
+    await this.updateCurrencyPair('USDT', 'RUB');
   }
 
   public async updateUsdRub() {
@@ -66,7 +66,7 @@ export class RubUpdateCourseService {
     return [
       this.updateUsdtRub(),
       this.updateEthRub(),
-      this.updateUsdtRub(),
+      this.updateUsdRub(),
       this.updateBtcRub(),
       this.updateAedToRub(),
     ];
