@@ -18,6 +18,18 @@ export class TonUpdateCourseService {
       ['TON', 'USD', 'RUB'],
       ['RUB', 'USD', 'TON'],
     );
+    console.log(
+      'Before',
+      tonRates.prices.RUB,
+      '; After: ',
+      tonRates.prices.RUB - tonRates.prices.RUB * 0.005,
+    );
+    console.log(
+      'Before',
+      rubRates.prices.TON,
+      '; After: ',
+      rubRates.prices.TON - rubRates.prices.TON * 0.005,
+    );
     const lowerAedRate = tonRates.prices.USD * 3.64;
     const upperAedRate = tonRates.prices.USD * 3.7;
     await Promise.all([
