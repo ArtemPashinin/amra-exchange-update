@@ -18,30 +18,39 @@ export class TonUpdateCourseService {
       ['TON', 'USD', 'RUB'],
       ['RUB', 'USD', 'TON'],
     );
-    const aedRate = tonRates.prices.USD * 3.67;
+    const lowerAedRate = tonRates.prices.USD * 3.64;
+    const upperAedRate = tonRates.prices.USD * 3.7;
     await Promise.all([
       this.currencyExchangeService.updateCourse(
         'TON',
         'RUB',
-        tonRates.prices.RUB,
+        tonRates.prices.RUB - tonRates.prices.RUB * 0.005,
       ),
       this.currencyExchangeService.updateCourse(
         'TON',
         'USD',
-        tonRates.prices.USD,
+        tonRates.prices.USD - tonRates.prices.USD * 0.005,
       ),
-      this.currencyExchangeService.updateCourse('TON', 'AED', aedRate),
+      this.currencyExchangeService.updateCourse(
+        'TON',
+        'AED',
+        lowerAedRate - lowerAedRate * 0.005,
+      ),
       this.currencyExchangeService.updateCourse(
         'RUB',
         'TON',
-        rubRates.prices.TON,
+        rubRates.prices.TON - rubRates.prices.TON * 0.005,
       ),
       this.currencyExchangeService.updateCourse(
         'USD',
         'TON',
-        usdRates.prices.TON,
+        usdRates.prices.TON - usdRates.prices.TON * 0.005,
       ),
-      this.currencyExchangeService.updateCourse('AED', 'TON', 1 / aedRate),
+      this.currencyExchangeService.updateCourse(
+        'AED',
+        'TON',
+        1 / upperAedRate - (1 / upperAedRate) * 0.005,
+      ),
     ]);
   }
 

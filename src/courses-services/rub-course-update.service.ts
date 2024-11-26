@@ -12,51 +12,49 @@ export class RubUpdateCourseService {
   private async updateCurrencyPair(
     source: string,
     target: string,
+    fee: number,
     isUsdtToUsd: boolean = false,
   ) {
     const [ask, bid] = await this.appService.getOffer(source, target);
-
+    const bidPrice = bid.price - bid.price * fee;
+    const askPrice = ask.price + ask.price * fee;
     if (isUsdtToUsd) {
-      await this.currencyExchangeService.updateCourse('USD', target, bid.price);
+      await this.currencyExchangeService.updateCourse('USD', target, bidPrice);
       await this.currencyExchangeService.updateCourse(
         target,
         'USD',
-        1 / ask.price,
+        1 / askPrice,
       );
     } else {
-      await this.currencyExchangeService.updateCourse(
-        source,
-        target,
-        bid.price,
-      );
+      await this.currencyExchangeService.updateCourse(source, target, bidPrice);
       await this.currencyExchangeService.updateCourse(
         target,
         source,
-        1 / ask.price,
+        1 / askPrice,
       );
     }
   }
 
   public async updateUsdtRub() {
-    await this.updateCurrencyPair('USDT', 'RUB');
+    await this.updateCurrencyPair('USDT', 'RUB', 0.025);
   }
 
   public async updateUsdRub() {
-    await this.updateCurrencyPair('USDT', 'RUB', true);
+    await this.updateCurrencyPair('USDT', 'RUB', 0.025);
   }
 
   public async updateEthRub() {
-    await this.updateCurrencyPair('ETH', 'RUB');
+    await this.updateCurrencyPair('ETH', 'RUB', 0.005);
   }
 
   public async updateBtcRub() {
-    await this.updateCurrencyPair('BTC', 'RUB');
+    await this.updateCurrencyPair('BTC', 'RUB', 0.005);
   }
 
   public async updateAedToRub() {
     const [ask, bid] = await this.appService.getOffer('USDT', 'RUB');
-    const bidCourse = bid.price / 3.67;
-    const askCourse = 1 / (ask.price / 3.67);
+    const bidCourse = bid.price / 3.64;
+    const askCourse = 1 / (ask.price / 3.7);
     await this.currencyExchangeService.updateCourse('AED', 'RUB', bidCourse);
     await this.currencyExchangeService.updateCourse('RUB', 'AED', askCourse);
   }

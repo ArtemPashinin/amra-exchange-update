@@ -12,8 +12,8 @@ export class BtcUpdateCourseService {
   public async updateBtcAed() {
     try {
       const [ask, bid] = await this.appService.getOffer('BTC', 'USD');
-      const bidCourse = bid.price * 3.67;
-      const askCourse = 1 / (ask.price * 3.67);
+      const bidCourse = bid.price * 3.64;
+      const askCourse = 1 / (ask.price * 3.7);
       await this.currencyExchangeService.updateCourse('BTC', 'AED', bidCourse);
       await this.currencyExchangeService.updateCourse('AED', 'BTC', askCourse);
     } catch (err) {
