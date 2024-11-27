@@ -23,10 +23,17 @@ export class EurUpdateCourseService {
       ['EUR', 'RUB', 'USD', 'BTC', 'AED', 'TON', 'ETH'],
       ['EUR', 'RUB', 'USD', 'BTC', 'AED', 'TON', 'ETH'],
     );
-    console.log(eurRates);
     await Promise.all([
-      this.currencyExchangeService.updateCourse('EUR', 'RUB', eurRates.prices.RUB),
-      this.currencyExchangeService.updateCourse('EUR', 'USD', eurRates.prices.USD),
+      this.currencyExchangeService.updateCourse(
+        'EUR',
+        'RUB',
+        eurRates.prices.RUB,
+      ),
+      this.currencyExchangeService.updateCourse(
+        'EUR',
+        'USD',
+        eurRates.prices.USD,
+      ),
       this.currencyExchangeService.updateCourse(
         'EUR',
         'USDT',
@@ -42,13 +49,21 @@ export class EurUpdateCourseService {
         'ETH',
         eurRates.prices.ETH - eurRates.prices.ETH * Fee.CRYPTO,
       ),
-      this.currencyExchangeService.updateCourse('EUR', 'AED', eurRates.prices.AED),
+      this.currencyExchangeService.updateCourse(
+        'EUR',
+        'AED',
+        eurRates.prices.AED,
+      ),
       this.currencyExchangeService.updateCourse(
         'EUR',
         'TON',
         eurRates.prices.TON - eurRates.prices.TON * Fee.CRYPTO,
       ),
-      this.currencyExchangeService.updateCourse('RUB', 'EUR', rubRates.prices.EUR),
+      this.currencyExchangeService.updateCourse(
+        'RUB',
+        'EUR',
+        rubRates.prices.EUR,
+      ),
       this.currencyExchangeService.updateCourse(
         'BTC',
         'EUR',
@@ -64,8 +79,16 @@ export class EurUpdateCourseService {
         'EUR',
         tonRates.prices.EUR - tonRates.prices.EUR * Fee.CRYPTO,
       ),
-      this.currencyExchangeService.updateCourse('AED', 'EUR', aedRates.prices.EUR),
-      this.currencyExchangeService.updateCourse('USD', 'EUR', usdRates.prices.EUR),
+      this.currencyExchangeService.updateCourse(
+        'AED',
+        'EUR',
+        aedRates.prices.EUR,
+      ),
+      this.currencyExchangeService.updateCourse(
+        'USD',
+        'EUR',
+        usdRates.prices.EUR,
+      ),
       this.currencyExchangeService.updateCourse(
         'USDT',
         'EUR',
