@@ -17,7 +17,7 @@ export class RubUpdateCourseService {
     isUsdtToUsd: boolean = false,
   ) {
     const [ask, bid] = await this.appService.getOffer(source, target);
-    const bidPrice = bid.price + bid.price * fee;
+    const bidPrice = bid.price - bid.price * fee;
     const askPrice = ask.price - ask.price * fee;
     if (isUsdtToUsd) {
       await this.currencyExchangeService.updateCourse('USD', target, bidPrice);
