@@ -10,15 +10,11 @@ export class EthUpdateCourseService {
   ) {}
 
   public async updateEthAed() {
-    try {
-      const [ask, bid] = await this.appService.getOffer('Eth', 'USD');
-      const bidCourse = bid.price * 3.64;
-      const askCourse = 1 / (ask.price * 3.7);
-      await this.currencyExchangeService.updateCourse('ETH', 'AED', bidCourse);
-      await this.currencyExchangeService.updateCourse('AED', 'ETH', askCourse);
-    } catch (err) {
-      console.log('this');
-    }
+    const [ask, bid] = await this.appService.getOffer('Eth', 'USD');
+    const bidCourse = bid.price * 3.64;
+    const askCourse = 1 / (ask.price * 3.7);
+    await this.currencyExchangeService.updateCourse('ETH', 'AED', bidCourse);
+    await this.currencyExchangeService.updateCourse('AED', 'ETH', askCourse);
   }
 
   public getTasks() {
