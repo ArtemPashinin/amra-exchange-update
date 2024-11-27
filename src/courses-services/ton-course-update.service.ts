@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { AppService } from '../app.service';
 import { CurrencyExchangeService } from '../currency-exchange.service';
+import { Fee } from 'src/enums/fee.enum';
 
 @Injectable()
 export class TonUpdateCourseService {
@@ -24,32 +25,32 @@ export class TonUpdateCourseService {
       this.currencyExchangeService.updateCourse(
         'TON',
         'RUB',
-        tonRates.prices.RUB - tonRates.prices.RUB * 0.005,
+        tonRates.prices.RUB - tonRates.prices.RUB * Fee.CRYPTO,
       ),
       this.currencyExchangeService.updateCourse(
         'TON',
         'USD',
-        tonRates.prices.USD - tonRates.prices.USD * 0.005,
+        tonRates.prices.USD - tonRates.prices.USD * Fee.CRYPTO,
       ),
       this.currencyExchangeService.updateCourse(
         'TON',
         'AED',
-        lowerAedRate - lowerAedRate * 0.005,
+        lowerAedRate - lowerAedRate * Fee.CRYPTO,
       ),
       this.currencyExchangeService.updateCourse(
         'RUB',
         'TON',
-        rubRates.prices.TON - rubRates.prices.TON * 0.005,
+        rubRates.prices.TON - rubRates.prices.TON * Fee.CRYPTO,
       ),
       this.currencyExchangeService.updateCourse(
         'USD',
         'TON',
-        usdRates.prices.TON - usdRates.prices.TON * 0.005,
+        usdRates.prices.TON - usdRates.prices.TON * Fee.CRYPTO,
       ),
       this.currencyExchangeService.updateCourse(
         'AED',
         'TON',
-        1 / upperAedRate - (1 / upperAedRate) * 0.005,
+        1 / upperAedRate - (1 / upperAedRate) * Fee.CRYPTO,
       ),
     ]);
   }

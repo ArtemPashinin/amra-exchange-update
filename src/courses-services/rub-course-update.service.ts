@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { AppService } from '../app.service';
 import { CurrencyExchangeService } from '../currency-exchange.service';
+import { Fee } from 'src/enums/fee.enum';
 
 @Injectable()
 export class RubUpdateCourseService {
@@ -36,19 +37,19 @@ export class RubUpdateCourseService {
   }
 
   public async updateUsdtRub() {
-    await this.updateCurrencyPair('USDT', 'RUB', 0.025);
+    await this.updateCurrencyPair('USD', 'RUB', Fee.USDT_RUB, true);
   }
 
   public async updateUsdRub() {
-    await this.updateCurrencyPair('USDT', 'RUB', 0.025);
+    await this.updateCurrencyPair('USDT', 'RUB', Fee.USDT_RUB);
   }
 
   public async updateEthRub() {
-    await this.updateCurrencyPair('ETH', 'RUB', 0.005);
+    await this.updateCurrencyPair('ETH', 'RUB', Fee.CRYPTO);
   }
 
   public async updateBtcRub() {
-    await this.updateCurrencyPair('BTC', 'RUB', 0.005);
+    await this.updateCurrencyPair('BTC', 'RUB', Fee.CRYPTO);
   }
 
   public async updateAedToRub() {
