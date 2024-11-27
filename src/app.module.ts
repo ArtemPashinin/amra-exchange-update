@@ -14,6 +14,7 @@ import { BtcUpdateCourseService } from './courses-services/btc-course-update.ser
 import { EthUpdateCourseService } from './courses-services/eth-course-update.service';
 import { AedUpdateCourseService } from './courses-services/aed-course-update.service';
 import { TonUpdateCourseService } from './courses-services/ton-course-update.service';
+import { EurUpdateCourseService } from './courses-services/eur-course-update.service';
 
 @Module({
   imports: [
@@ -50,6 +51,7 @@ import { TonUpdateCourseService } from './courses-services/ton-course-update.ser
     EthUpdateCourseService,
     AedUpdateCourseService,
     TonUpdateCourseService,
+    EurUpdateCourseService,
     UpdatorService,
   ],
 })

@@ -5,6 +5,7 @@ import { BtcUpdateCourseService } from './btc-course-update.service';
 import { EthUpdateCourseService } from './eth-course-update.service';
 import { AedUpdateCourseService } from './aed-course-update.service';
 import { TonUpdateCourseService } from './ton-course-update.service';
+import { EurUpdateCourseService } from './eur-course-update.service';
 
 @Injectable()
 export class UpdatorService {
@@ -14,6 +15,7 @@ export class UpdatorService {
     private readonly ethUpdateCourseService: EthUpdateCourseService,
     private readonly aedUpdateCourseService: AedUpdateCourseService,
     private readonly tonUpdateCourseService: TonUpdateCourseService,
+    private readonly eurUpdateCourseService: EurUpdateCourseService,
   ) {}
 
   @Cron('*/30 * * * * *')
@@ -24,6 +26,7 @@ export class UpdatorService {
       this.ethUpdateCourseService.getTasks(),
       this.aedUpdateCourseService.getTasks(),
       this.tonUpdateCourseService.getTasks(),
+      this.eurUpdateCourseService.getTasks(),
     ]);
   }
 }
