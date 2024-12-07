@@ -12,10 +12,14 @@ export class AedUpdateCourseService {
   public async updateAedRub() {
     try {
       const [ask, bid] = await this.appService.getOffer('USDT', 'RUB');
-      const bidCourse = bid.price / 3.64;
-      const askCourse = 1 / (ask.price / 3.7);
-      await this.currencyExchangeService.updateCourse('AED', 'RUB', bidCourse);
-      await this.currencyExchangeService.updateCourse('RUB', 'AED', askCourse);
+      const bidCourse = bid.price / 3.7;
+      const askCourse = 1 / (ask.price / 3.64);
+      await Promise.all([
+        this.currencyExchangeService.updateCourse('USDT', 'AED', bidCourse),
+        this.currencyExchangeService.updateCourse('AED', 'USDT', askCourse),
+        this.currencyExchangeService.updateCourse('USDT', 'AED', bidCourse),
+        this.currencyExchangeService.updateCourse('AED', 'USDT', askCourse),
+      ]);
     } catch (err) {
       console.log('this');
     }
