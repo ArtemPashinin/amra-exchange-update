@@ -24,7 +24,7 @@ export class UpdatorService {
       this.rubUpdateCourseService.getTasks(),
       this.btcUpdateCourseService.getTasks(),
       this.ethUpdateCourseService.getTasks(),
-      this.aedUpdateCourseService.getTasks(),
+      // this.aedUpdateCourseService.getTasks(),
       this.tonUpdateCourseService.getTasks(),
       this.eurUpdateCourseService.getTasks(),
     ]);
