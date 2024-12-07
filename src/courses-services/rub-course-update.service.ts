@@ -54,11 +54,11 @@ export class RubUpdateCourseService {
 
   public async updateAedToRub() {
     const [ask, bid] = await this.appService.getOffer('USDT', 'RUB');
-    const bidCourse = bid.price / 3.64;
-    const askCourse = 1 / (ask.price / 3.7);
+    const bidCourse = (bid.price - bid.price * Fee.CRYPTO) / 3.6;
+    const askCourse = 1 / (ask.price + (ask.price * Fee.CRYPTO) / 3.6);
     // bidCourse > askCourse
-    await this.currencyExchangeService.updateCourse('AED', 'RUB', bidCourse);
-    await this.currencyExchangeService.updateCourse('RUB', 'AED', askCourse);
+    await this.currencyExchangeService.updateCourse('AED', 'RUB', askCourse);
+    await this.currencyExchangeService.updateCourse('RUB', 'AED', bidCourse);
   }
 
   public getTasks() {
