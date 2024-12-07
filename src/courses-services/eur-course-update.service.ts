@@ -23,6 +23,9 @@ export class EurUpdateCourseService {
       ['EUR', 'RUB', 'USD', 'BTC', 'AED', 'TON', 'ETH'],
       ['EUR', 'RUB', 'USD', 'BTC', 'AED', 'TON', 'ETH'],
     );
+    console.log(eurRates.prices.RUB);
+    console.log('----');
+    console.log(rubRates.prices.EUR);
     await Promise.all([
       this.currencyExchangeService.updateCourse(
         'EUR',
