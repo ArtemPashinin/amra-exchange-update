@@ -13,7 +13,7 @@ export class AedUpdateCourseService {
     try {
       const [ask, bid] = await this.appService.getOffer('USDT', 'RUB');
       const bidCourse = 3.64;
-      const askCourse = ask.price / 3.7;
+      const askCourse = 1 / 3.7;
       await Promise.all([
         this.currencyExchangeService.updateCourse('USDT', 'AED', bidCourse),
         this.currencyExchangeService.updateCourse('AED', 'USDT', askCourse),
